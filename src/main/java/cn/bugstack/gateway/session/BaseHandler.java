@@ -1,4 +1,4 @@
-package cn.linqi.gateway.session;
+package cn.bugstack.gateway.session;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
