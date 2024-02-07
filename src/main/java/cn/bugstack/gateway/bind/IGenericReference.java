@@ -1,4 +1,4 @@
-package cn.linqi.gateway.bind;
+package cn.bugstack.gateway.bind;
 
 /**
  * @InterfaceName IGenericReference
