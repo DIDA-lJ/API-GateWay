@@ -1,6 +1,8 @@
-package cn.linqi.gateway.session.handlers;
+package cn.bugstack.gateway.session.handlers;
 
-import cn.linqi.gateway.session.BaseHandler;
+import cn.bugstack.gateway.bind.IGenericReference;
+import cn.bugstack.gateway.session.BaseHandler;
+import cn.bugstack.gateway.session.Configuration;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import io.netty.channel.Channel;
@@ -9,6 +11,7 @@ import io.netty.handler.codec.http.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 /**
  * @author linqi
  * @version 1.0.0
@@ -16,16 +19,35 @@ import org.slf4j.LoggerFactory;
  */
 
 public class SessionServerHandler extends BaseHandler<FullHttpRequest> {
+
     private final Logger logger = LoggerFactory.getLogger(SessionServerHandler.class);
+
+    private final Configuration configuration;
+
+    public SessionServerHandler(Configuration configuration) {
+        this.configuration = configuration;
+    }
 
     @Override
     protected void session(ChannelHandlerContext ctx, final Channel channel, FullHttpRequest request) {
         logger.info("网关接收请求 uri：{} method：{}", request.uri(), request.method());
 
+        // 返回信息控制：简单处理
+        String methodName = request.uri().substring(1);
+        if (methodName.equals("favicon.ico")) {
+            return;
+        }
+
         // 返回信息处理
         DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
-        // 返回信息控制
-        response.content().writeBytes(JSON.toJSONBytes("你访问路径被林柒的 API 网关管理了 URI:" + request.uri(), SerializerFeature.PrettyFormat));
+
+        // 服务泛化调用
+        IGenericReference reference = configuration.getGenericReference("sayHi");
+        String result = reference.$invoke("test") + " " + System.currentTimeMillis();
+
+        // 设置回写数据
+        response.content().writeBytes(JSON.toJSONBytes(result, SerializerFeature.PrettyFormat));
+
         // 头部信息设置
         HttpHeaders heads = response.headers();
         // 返回内容类型
