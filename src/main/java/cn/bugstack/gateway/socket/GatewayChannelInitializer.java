@@ -1,6 +1,5 @@
 package cn.bugstack.gateway.socket;
 
-import cn.bugstack.gateway.session.Configuration;
 import cn.bugstack.gateway.session.defaults.DefaultGatewaySessionFactory;
 import cn.bugstack.gateway.socket.handlers.GatewayServerHandler;
 import io.netty.channel.ChannelInitializer;
