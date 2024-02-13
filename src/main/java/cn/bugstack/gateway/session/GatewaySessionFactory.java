@@ -8,5 +8,5 @@ package cn.bugstack.gateway.session;
 
 public interface GatewaySessionFactory {
 
-    GatewaySession openSession();
+    GatewaySession openSession(String uri);
 }
