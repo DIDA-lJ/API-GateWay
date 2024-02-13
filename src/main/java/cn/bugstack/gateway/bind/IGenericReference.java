@@ -2,7 +2,7 @@ package cn.bugstack.gateway.bind;
 
 /**
  * @InterfaceName IGenericReference
- * @Description 统一泛化调用接口 (继承 core-02)
+ * @Description 统一泛化调用接口 (继承 core-03)
  * @Version 1.0.0
  * @Author LinQi
  * @Date 2024/02/03
