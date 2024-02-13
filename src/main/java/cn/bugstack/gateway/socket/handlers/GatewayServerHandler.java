@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author linqi
  * @version 1.0.0
- * @description
+ * @description 会话服务处理器
  */
 
 public class GatewayServerHandler extends BaseHandler<FullHttpRequest> {
@@ -38,8 +38,8 @@ public class GatewayServerHandler extends BaseHandler<FullHttpRequest> {
             return;
         }
 
-        GatewaySession gatewaySession = gatewaySessionFactory.openSession();
-        IGenericReference reference = gatewaySession.getMapper(uri);
+        GatewaySession gatewaySession = gatewaySessionFactory.openSession(uri);
+        IGenericReference reference = gatewaySession.getMapper();
         String result = reference.$invoke("test") + " " + System.currentTimeMillis();
 
         // 返回信息处理
