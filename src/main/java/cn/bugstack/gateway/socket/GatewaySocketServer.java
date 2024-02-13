@@ -18,7 +18,7 @@ import java.util.concurrent.Callable;
 /**
  * @author linqi
  * @version 1.0.0
- * @description 
+ * @description 网关会话服务
  */
 
 public class GatewaySocketServer implements Callable<Channel> {
