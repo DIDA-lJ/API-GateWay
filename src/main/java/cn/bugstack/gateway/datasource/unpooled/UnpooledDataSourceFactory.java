@@ -9,7 +9,6 @@ import cn.bugstack.gateway.session.Configuration;
  * @version 1.0.0
  * @description 无池化的连接池工厂
  */
-
 public class UnpooledDataSourceFactory implements DataSourceFactory {
 
     protected UnpooledDataSource dataSource;
