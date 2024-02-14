@@ -1,10 +1,10 @@
 package cn.bugstack.gateway.socket.handlers;
 
 import cn.bugstack.gateway.bind.IGenericReference;
-import cn.bugstack.gateway.session.Configuration;
 import cn.bugstack.gateway.session.GatewaySession;
 import cn.bugstack.gateway.session.defaults.DefaultGatewaySessionFactory;
 import cn.bugstack.gateway.socket.BaseHandler;
+import cn.bugstack.gateway.socket.agreement.RequestParser;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import io.netty.channel.Channel;
@@ -12,6 +12,11 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
+
+import io.netty.handler.codec.http.FullHttpRequest;
+
 /**
  * @author linqi
  * @version 1.0.0
@@ -31,16 +36,20 @@ public class GatewayServerHandler extends BaseHandler<FullHttpRequest> {
     @Override
     protected void session(ChannelHandlerContext ctx, final Channel channel, FullHttpRequest request) {
         logger.info("网关接收请求 uri：{} method：{}", request.uri(), request.method());
+        // 解析请求参数
+        Map<String, Object> requestObj = new RequestParser(request).parse();
 
         // 返回信息控制：简单处理
         String uri = request.uri();
+        int idx = uri.indexOf("?");
+        uri = idx > 0 ? uri.substring(0, idx) : uri;
         if (uri.equals("/favicon.ico")) {
             return;
         }
 
         GatewaySession gatewaySession = gatewaySessionFactory.openSession(uri);
         IGenericReference reference = gatewaySession.getMapper();
-        String result = reference.$invoke("test") + " " + System.currentTimeMillis();
+        String result = reference.$invoke(requestObj) + " " + System.currentTimeMillis();
 
         // 返回信息处理
         DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
