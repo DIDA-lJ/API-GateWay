@@ -16,7 +16,6 @@ import org.apache.dubbo.rpc.service.GenericService;
  * @version 1.0.0
  * @description 无池化的连接池
  */
-
 public class UnpooledDataSource implements DataSource {
 
     private Configuration configuration;
