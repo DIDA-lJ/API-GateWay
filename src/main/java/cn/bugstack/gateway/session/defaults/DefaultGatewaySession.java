@@ -61,4 +61,5 @@ public class DefaultGatewaySession implements GatewaySession {
     public Configuration getConfiguration() {
         return configuration;
     }
+
 }
