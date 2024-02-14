@@ -13,7 +13,7 @@ import io.netty.handler.codec.http.HttpResponseEncoder;
 /**
  * @author linqi
  * @version 1.0.0
- * @description
+ * @description 会话管道初始化类
  */
 
 public class GatewayChannelInitializer extends ChannelInitializer<SocketChannel> {
