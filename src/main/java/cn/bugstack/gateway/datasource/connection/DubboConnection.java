@@ -13,7 +13,6 @@ import org.apache.dubbo.rpc.service.GenericService;
  * @version 1.0.0
  * @description RPC Dubbo Connection
  */
-
 public class DubboConnection implements Connection {
 
     private final GenericService genericService;
