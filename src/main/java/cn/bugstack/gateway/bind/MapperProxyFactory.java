@@ -16,7 +16,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version 1.0.0
  * @description 泛化调用静态代理工厂
  */
-
 public class MapperProxyFactory {
 
     private String uri;
