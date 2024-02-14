@@ -13,7 +13,6 @@ import java.util.Map;
  * @version 1.0.0
  * @description 映射代理调用
  */
-
 public class MapperProxy implements MethodInterceptor {
 
     private GatewaySession gatewaySession;
