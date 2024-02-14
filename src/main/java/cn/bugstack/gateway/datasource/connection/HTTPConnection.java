@@ -41,5 +41,4 @@ public class HTTPConnection implements Connection {
         }
         return res;
     }
-
 }
