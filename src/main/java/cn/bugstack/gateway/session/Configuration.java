@@ -16,7 +16,6 @@ import java.util.Map;
  * @version 1.0.0
  * @description 会话生命周期配置项
  */
-
 public class Configuration {
 
     private final MapperRegistry mapperRegistry = new MapperRegistry(this);
