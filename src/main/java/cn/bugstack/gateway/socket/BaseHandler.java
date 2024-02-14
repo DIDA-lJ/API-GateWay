@@ -7,9 +7,8 @@ import io.netty.channel.SimpleChannelInboundHandler;
 /**
  * @author linqi
  * @version 1.0.0
- * @description
+ * @description 数据处理器基类
  */
-
 public abstract class BaseHandler<T> extends SimpleChannelInboundHandler<T> {
 
     @Override
