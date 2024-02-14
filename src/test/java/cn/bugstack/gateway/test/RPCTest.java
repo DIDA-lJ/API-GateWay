@@ -8,10 +8,14 @@ import org.apache.dubbo.config.utils.ReferenceConfigCache;
 import org.apache.dubbo.rpc.service.GenericService;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author linqi
  * @version 1.0.0
- * @description
+ * @description 泛化调用测试
+ * 官网案例：https://dubbo.apache.org/zh/docs/advanced/generic-reference/
  */
 
 public class RPCTest {
@@ -41,9 +45,29 @@ public class RPCTest {
         ReferenceConfigCache cache = ReferenceConfigCache.getCache();
         GenericService genericService = cache.get(reference);
 
-        Object result = genericService.$invoke("sayHi", new String[]{"java.lang.String"}, new Object[]{"world"});
+//        Object result = genericService.$invoke("sayHi", new String[]{"java.lang.String"}, new Object[]{"world"});
+//        Map<String, Object> allRequestParams = new HashMap();
+//        allRequestParams.put("name", "小傅哥");
+//        allRequestParams.put("uid", "10001");
+//        Object result = genericService.$invoke("insert", new String[]{"java.lang.Object"}, new Object[]{allRequestParams});
 
-        System.out.println(result);
+        String[] parameterTypes = new String[]{"java.lang.String", "cn.bugstack.gateway.rpc.dto.XReq"};
+
+        Map<String, Object> params01 = new HashMap<>();
+//        params.put("class", "cn.bugstack.gateway.rpc.dto.XReq");
+        params01.put("str", "10001");
+
+        Map<String, Object> params02 = new HashMap<>();
+//        params.put("str", "10001");
+        params02.put("uid", "10001");
+        params02.put("name", "linqi");
+
+//        Object user = genericService.$invoke("sayHi", new String[]{"java.lang.String"}, params.values().toArray());
+//        Object user = genericService.$invoke("insert", new String[]{"cn.bugstack.gateway.rpc.dto.XReq"}, new Object[]{params});
+        Object user = genericService.$invoke("test", new String[]{"java.lang.String", "cn.bugstack.gateway.rpc.dto.XReq"}, new Object[]{params01.values().toArray()[0], params02});
+
+
+        System.out.println(user);
     }
 
 }
