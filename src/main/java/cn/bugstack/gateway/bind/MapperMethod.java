@@ -5,11 +5,12 @@ import cn.bugstack.gateway.session.Configuration;
 import cn.bugstack.gateway.session.GatewaySession;
 
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * @author linqi
  * @version 1.0.0
- * @description 绑定调用方法
+ * @description 绑定调用方法（添加 post 方法）
  */
 
 public class MapperMethod {
@@ -22,13 +23,14 @@ public class MapperMethod {
         this.command = configuration.getHttpStatement(uri).getHttpCommandType();
     }
 
-    public Object execute(GatewaySession session, Object args) {
+    public Object execute(GatewaySession session, Map<String, Object> params) {
         Object result = null;
         switch (command) {
             case GET:
-                result = session.get(methodName, args);
+                result = session.get(methodName, params);
                 break;
             case POST:
+                result = session.post(methodName, params);
                 break;
             case PUT:
                 break;
@@ -41,3 +43,4 @@ public class MapperMethod {
     }
 
 }
+
