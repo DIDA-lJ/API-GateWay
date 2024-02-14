@@ -1,4 +1,4 @@
-package cn.bugstack.gateway;
+package cn.bugstack.gateway.type;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
