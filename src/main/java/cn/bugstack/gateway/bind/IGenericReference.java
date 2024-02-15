@@ -4,7 +4,7 @@ import java.util.Map;
 
 /**
  * @InterfaceName IGenericReference
- * @Description 统一泛化调用接口(引入执行器封装服务调用)
+ * @Description 统一泛化调用接口
  * @Version 1.0.0
  * @Author LinQi
  * @Date 2024/02/03
