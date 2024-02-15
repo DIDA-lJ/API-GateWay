@@ -15,7 +15,6 @@ import io.netty.handler.codec.http.HttpResponseEncoder;
  * @version 1.0.0
  * @description 会话管道初始化类
  */
-
 public class GatewayChannelInitializer extends ChannelInitializer<SocketChannel> {
 
     private final DefaultGatewaySessionFactory gatewaySessionFactory;

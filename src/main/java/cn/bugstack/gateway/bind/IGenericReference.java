@@ -4,7 +4,7 @@ import java.util.Map;
 
 /**
  * @InterfaceName IGenericReference
- * @Description 统一泛化调用接口
+ * @Description 统一泛化调用接口(引入执行器封装服务调用)
  * @Version 1.0.0
  * @Author LinQi
  * @Date 2024/02/03
@@ -15,5 +15,5 @@ public interface IGenericReference {
      * @param params 传入参数，以 map 的方式传入执行调用
      * @return 执行结果的串
      */
-    String $invoke(Map<String, Object> params);
+    Object $invoke(Map<String, Object> params);
 }

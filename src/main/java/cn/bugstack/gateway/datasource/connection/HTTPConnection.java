@@ -4,7 +4,6 @@ import cn.bugstack.gateway.datasource.Connection;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 
-
 import java.io.IOException;
 
 /**
@@ -12,7 +11,6 @@ import java.io.IOException;
  * @version 1.0.0
  * @description 封装 http post 请求
  */
-
 public class HTTPConnection implements Connection {
 
     private final HttpClient httpClient;
@@ -41,4 +39,5 @@ public class HTTPConnection implements Connection {
         }
         return res;
     }
+
 }

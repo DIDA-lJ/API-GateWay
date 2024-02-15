@@ -22,7 +22,6 @@ import io.netty.handler.codec.http.FullHttpRequest;
  * @version 1.0.0
  * @description 会话服务处理器
  */
-
 public class GatewayServerHandler extends BaseHandler<FullHttpRequest> {
 
     private final Logger logger = LoggerFactory.getLogger(GatewayServerHandler.class);
@@ -43,9 +42,7 @@ public class GatewayServerHandler extends BaseHandler<FullHttpRequest> {
         String uri = request.uri();
         int idx = uri.indexOf("?");
         uri = idx > 0 ? uri.substring(0, idx) : uri;
-        if (uri.equals("/favicon.ico")) {
-            return;
-        }
+        if (uri.equals("/favicon.ico")) return;
 
         GatewaySession gatewaySession = gatewaySessionFactory.openSession(uri);
         IGenericReference reference = gatewaySession.getMapper();

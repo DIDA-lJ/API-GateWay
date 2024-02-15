@@ -20,7 +20,6 @@ import java.util.concurrent.Callable;
  * @version 1.0.0
  * @description 网关会话服务
  */
-
 public class GatewaySocketServer implements Callable<Channel> {
 
     private final Logger logger = LoggerFactory.getLogger(GatewaySocketServer.class);
