@@ -1,8 +1,13 @@
 package cn.bugstack.gateway.session;
 
+
 import cn.bugstack.gateway.bind.MapperRegistry;
 import cn.bugstack.gateway.bind.IGenericReference;
+import cn.bugstack.gateway.datasource.Connection;
+import cn.bugstack.gateway.executor.Executor;
+import cn.bugstack.gateway.executor.SimpleExecutor;
 import cn.bugstack.gateway.mapping.HttpStatement;
+import cn.bugstack.gateway.type.SimpleTypeRegistry;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
@@ -10,6 +15,7 @@ import org.apache.dubbo.rpc.service.GenericService;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * @author linqi
@@ -77,4 +83,9 @@ public class Configuration {
         return httpStatements.get(uri);
     }
 
+    public Executor newExecutor(Connection connection) {
+        return new SimpleExecutor(this, connection);
+    }
+
 }
+
