@@ -20,7 +20,6 @@ import java.util.Map;
  * @version 1.0.0
  * @description 默认网关会话实现类
  */
-
 public class DefaultGatewaySession implements GatewaySession {
 
     private Configuration configuration;
