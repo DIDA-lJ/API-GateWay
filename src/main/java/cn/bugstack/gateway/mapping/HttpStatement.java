@@ -3,7 +3,7 @@ package cn.bugstack.gateway.mapping;
 /**
  * @author linqi
  * @version 1.0.0
- * @description 网关接口映射信息（添加请求参数类型）
+ * @description 网关接口映射信息
  */
 
 public class HttpStatement {
