@@ -1,5 +1,7 @@
 package cn.bugstack.gateway.executor.result;
 
+import cn.bugstack.gateway.mapping.HttpCommandType;
+
 /**
  * @author linqi
  * @version 1.0.0
@@ -39,3 +41,5 @@ public class SessionResult {
     }
 
 }
+
+
