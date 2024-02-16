@@ -35,7 +35,9 @@ public class RequestParser {
         String uri = request.uri();
         int idx = uri.indexOf("?");
         uri = idx > 0 ? uri.substring(0, idx) : uri;
-        if (uri.equals("/favicon.ico")) return null;
+        if (uri.equals("/favicon.ico")) {
+            return null;
+        }
         return uri;
     }
 
@@ -98,7 +100,9 @@ public class RequestParser {
                 val -> val.getKey().equals("Content-Type")
         ).findAny();
         Map.Entry<String, String> entry = header.orElse(null);
-        if (null == entry) return "none";
+        if (null == entry) {
+            return "none";
+        }
         // application/json、multipart/form-data;
         String contentType = entry.getValue();
         int idx = contentType.indexOf(";");
@@ -110,4 +114,3 @@ public class RequestParser {
     }
 
 }
-
