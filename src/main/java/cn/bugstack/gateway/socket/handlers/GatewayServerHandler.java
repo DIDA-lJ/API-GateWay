@@ -39,10 +39,8 @@ public class GatewayServerHandler extends BaseHandler<FullHttpRequest> {
         // 1. 解析请求参数
         RequestParser requestParser = new RequestParser(request);
         String uri = requestParser.getUri();
-        if (null == uri) {
-            return;
-        }
-        Map<String, Object> args = new RequestParser(request).parse();
+        if (null == uri) return;
+        Map<String, Object> args = requestParser.parse();
 
         // 2. 调用会话服务
         GatewaySession gatewaySession = gatewaySessionFactory.openSession(uri);
@@ -55,3 +53,4 @@ public class GatewayServerHandler extends BaseHandler<FullHttpRequest> {
     }
 
 }
+
