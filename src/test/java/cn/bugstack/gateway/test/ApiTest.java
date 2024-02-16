@@ -34,7 +34,7 @@ public class ApiTest {
      * http://localhost:7397/wg/activity/index
      * 参数：
      * {
-     * "name":"linqi",
+     * "name":"小傅哥",
      * "uid":"10001"
      * }
      */
@@ -50,7 +50,8 @@ public class ApiTest {
                 "sayHi",
                 "java.lang.String",
                 "/wg/activity/sayHi",
-                HttpCommandType.GET);
+                HttpCommandType.GET,
+                false);
 
         HttpStatement httpStatement02 = new HttpStatement(
                 "api-gateway-test",
@@ -58,7 +59,8 @@ public class ApiTest {
                 "insert",
                 "cn.bugstack.gateway.rpc.dto.XReq",
                 "/wg/activity/insert",
-                HttpCommandType.POST);
+                HttpCommandType.POST,
+                true);
 
         configuration.addMapper(httpStatement01);
         configuration.addMapper(httpStatement02);
@@ -67,7 +69,7 @@ public class ApiTest {
         DefaultGatewaySessionFactory gatewaySessionFactory = new DefaultGatewaySessionFactory(configuration);
 
         // 3. 创建启动网关网络服务
-        GatewaySocketServer server = new GatewaySocketServer(gatewaySessionFactory);
+        GatewaySocketServer server = new GatewaySocketServer(configuration, gatewaySessionFactory);
 
         Future<Channel> future = Executors.newFixedThreadPool(2).submit(server);
         Channel channel = future.get();
