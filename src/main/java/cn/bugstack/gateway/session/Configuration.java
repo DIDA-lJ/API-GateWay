@@ -1,6 +1,8 @@
 package cn.bugstack.gateway.session;
 
 
+import cn.bugstack.gateway.authorization.IAuth;
+import cn.bugstack.gateway.authorization.auth.AuthService;
 import cn.bugstack.gateway.bind.MapperRegistry;
 import cn.bugstack.gateway.bind.IGenericReference;
 import cn.bugstack.gateway.datasource.Connection;
@@ -28,6 +30,8 @@ public class Configuration {
 
     private final Map<String, HttpStatement> httpStatements = new HashMap<>();
 
+    private final IAuth auth = new AuthService();
+
     // RPC 应用服务配置项 api-gateway-test
     private final Map<String, ApplicationConfig> applicationConfigMap = new HashMap<>();
     // RPC 注册中心配置项 zookeeper://127.0.0.1:2181
@@ -35,7 +39,8 @@ public class Configuration {
     // RPC 泛化服务配置项 cn.bugstack.gateway.rpc.IActivityBooth
     private final Map<String, ReferenceConfig<GenericService>> referenceConfigMap = new HashMap<>();
 
-    public Configuration() {}
+    public Configuration() {
+    }
 
     public synchronized void registryConfig(String applicationName, String address, String interfaceName, String version) {
         if (applicationConfigMap.get(applicationName) == null) {
@@ -92,6 +97,10 @@ public class Configuration {
 
     public Executor newExecutor(Connection connection) {
         return new SimpleExecutor(this, connection);
+    }
+
+    public boolean authValidate(String uId, String token) {
+        return auth.validate(uId, token);
     }
 
 }
