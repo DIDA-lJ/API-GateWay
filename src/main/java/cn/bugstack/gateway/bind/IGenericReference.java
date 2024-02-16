@@ -1,5 +1,6 @@
 package cn.bugstack.gateway.bind;
 
+import cn.bugstack.gateway.executor.result.SessionResult;
 import java.util.Map;
 
 /**
@@ -15,5 +16,5 @@ public interface IGenericReference {
      * @param params 传入参数，以 map 的方式传入执行调用
      * @return 执行结果的串
      */
-    Object $invoke(Map<String, Object> params);
+    SessionResult $invoke(Map<String, Object> params);
 }
