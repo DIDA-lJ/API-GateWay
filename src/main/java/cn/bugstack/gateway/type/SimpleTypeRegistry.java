@@ -10,7 +10,6 @@ import java.util.Set;
  * @version 1.0.0
  * @description 基本类型注册器
  */
-
 public class SimpleTypeRegistry {
 
     private static final Set<String> SIMPLE_TYPE_SET = new HashSet<>();
@@ -46,3 +45,4 @@ public class SimpleTypeRegistry {
     }
 
 }
+
