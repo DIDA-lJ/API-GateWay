@@ -7,7 +7,6 @@ import org.apache.shiro.authc.AuthenticationToken;
  * @version 1.0.0
  * @description 验证 Token
  */
-
 public class GatewayAuthorizingToken implements AuthenticationToken {
 
     private static final long serialVersionUID = 1L;
@@ -45,4 +44,3 @@ public class GatewayAuthorizingToken implements AuthenticationToken {
     }
 
 }
-
