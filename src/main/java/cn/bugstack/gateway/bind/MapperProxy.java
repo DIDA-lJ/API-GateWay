@@ -30,4 +30,5 @@ public class MapperProxy implements MethodInterceptor {
         return linkMethod.execute(gatewaySession, (Map<String, Object>) args[0]);
     }
 
+
 }
