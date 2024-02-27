@@ -13,7 +13,6 @@ import org.apache.shiro.util.Factory;
  * @version 1.0.0
  * @description 认证服务实现
  */
-
 public class AuthService implements IAuth {
 
     private Subject subject;
