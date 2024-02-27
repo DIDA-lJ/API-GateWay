@@ -15,7 +15,6 @@ import org.apache.shiro.subject.PrincipalCollection;
  * @version 1.0.0
  * @description 验证领域
  */
-
 public class GatewayAuthorizingRealm extends AuthorizingRealm {
 
     @Override
@@ -35,9 +34,7 @@ public class GatewayAuthorizingRealm extends AuthorizingRealm {
             // 验证解析是否报错
             Claims claims = JwtUtil.decode(((GatewayAuthorizingToken) token).getJwt());
             // 验证签发人是否匹配
-            if (!token.getPrincipal().equals(claims.getSubject())) {
-                throw new AuthenticationException("无效令牌");
-            }
+            if (!token.getPrincipal().equals(claims.getSubject())) throw new AuthenticationException("无效令牌");
         } catch (Exception e) {
             throw new AuthenticationException("无效令牌");
         }
@@ -45,4 +42,5 @@ public class GatewayAuthorizingRealm extends AuthorizingRealm {
     }
 
 }
+
 
