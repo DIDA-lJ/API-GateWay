@@ -14,7 +14,6 @@ import java.util.Map;
  * @version 1.0.0
  * @description JWT（JSON Web Tokens）https://jwt.io/
  */
-
 public class JwtUtil {
 
     private static final String signingKey = "B*B^5Fe";
@@ -65,5 +64,4 @@ public class JwtUtil {
                 .parseClaimsJws(token)
                 .getBody();
     }
-
 }
