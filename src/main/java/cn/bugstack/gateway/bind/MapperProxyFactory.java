@@ -45,5 +45,4 @@ public class MapperProxyFactory {
             return (IGenericReference) enhancer.create();
         });
     }
-
 }
